@@ -8,6 +8,7 @@
       $(".gif-animation").on('mouseenter', function() {
         var self = $(this),
         imageSrc = self.attr("src").replace(".gif", ""),
+        // 現在日付をいれてgifアニメのキャッシュをクリアする
         animateImageSrc = imageSrc + "-on.gif?" + Date.now();
         self.attr("src", animateImageSrc);
       });
