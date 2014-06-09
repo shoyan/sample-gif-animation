@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gif animation</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".gif-animation").on('mouseenter', function() {
+            var imageSrc = $(this).children("img").attr("src").replace(".gif", "");
+            var animateImageSrc = imageSrc + "-on.gif?" + Date.now();
+           if ($(this).data("noAnimation") != "1") {
+            $(this).html('<img src="' + animateImageSrc + '">');
+            $(this).data("noAnimation", 1);
+           }
+        });
+
+        $(".gif-animation").on('mouseleave', function() {
+          var index = $(this).children("img").attr("src").indexOf("-on");
+          var imageSrc = $(this).children("img").attr("src").substring(0, index) + ".gif";
+          $(this).html('<img src="' + imageSrc + '" alt="">');
+          $(this).data("noAnimation", 0);
+        });
+    });
+</script>
+<style>
+    .gif-animation {
+        border: 1px solid #000;
+        width: 386px;
+        height: 346px;
+    }
+</style>
+</head>
+<body>
+    <div class="gif-animation">
+        <img src="featured-graphics.gif" alt="">
+    </div>
+
+    <div class="gif-animation">
+        <img src="featured-camera.gif" alt="">
+    </div>
+<body>
+</html>
