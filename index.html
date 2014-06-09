@@ -5,21 +5,19 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $(".gif-animation").on('mouseenter', function() {
-            var imageSrc = $(this).children("img").attr("src").replace(".gif", "");
-            var animateImageSrc = imageSrc + "-on.gif?" + Date.now();
-           if ($(this).data("noAnimation") != "1") {
-            $(this).html('<img src="' + animateImageSrc + '">');
-            $(this).data("noAnimation", 1);
-           }
-        });
+      $(".gif-animation").on('mouseenter', function() {
+        var self = $(this),
+        imageSrc = self.attr("src").replace(".gif", ""),
+        animateImageSrc = imageSrc + "-on.gif?" + Date.now();
+        self.attr("src", animateImageSrc);
+      });
 
-        $(".gif-animation").on('mouseleave', function() {
-          var index = $(this).children("img").attr("src").indexOf("-on");
-          var imageSrc = $(this).children("img").attr("src").substring(0, index) + ".gif";
-          $(this).html('<img src="' + imageSrc + '" alt="">');
-          $(this).data("noAnimation", 0);
-        });
+      $(".gif-animation").on('mouseleave', function() {
+        var self = $(this),
+        index = self.attr("src").indexOf("-on"),
+        imageSrc = self.attr("src").substring(0, index) + ".gif";
+        self.attr("src", imageSrc);
+      });
     });
 </script>
 <style>
@@ -31,12 +29,7 @@
 </style>
 </head>
 <body>
-    <div class="gif-animation">
-        <img src="featured-graphics.gif" alt="">
-    </div>
-
-    <div class="gif-animation">
-        <img src="featured-camera.gif" alt="">
-    </div>
+        <img class="gif-animation" src="featured-graphics.gif" alt="" width="388" height="348">
+        <img class="gif-animation" src="featured-camera.gif" alt="" width="388" height="348">
 <body>
 </html>
